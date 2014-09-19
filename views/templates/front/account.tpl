@@ -46,7 +46,7 @@
             <input type="submit" name="submitDatePicker" class="button"/>
         </form>
 		<div>
-			<a href="javascript:void(0)" onclick="showProductLines();" style="display:block;margin-top:20px;color:black">{l s='Show product lines' mod='trackingfront'}</a>
+			<a href="javascript:void(0)" onclick="showProductLines();" style="display:block;margin-top:20px;color:black">{l s='Show products details' mod='trackingfront'}</a>
 		</div>
     </div>
     <div style="float:right; margin: 25px 50px 0 0;">
