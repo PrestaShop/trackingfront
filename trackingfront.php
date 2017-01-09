@@ -40,7 +40,7 @@ class TrackingFront extends Module
 		parent::__construct();
 
 		$this->displayName = $this->l('Tracking - Front office');
-		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
 		$this->description = $this->l('Enables your affiliates to access their own statistics. See Stats/Referrers.');
 	}
 
