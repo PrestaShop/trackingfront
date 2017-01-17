@@ -62,11 +62,11 @@ class TrackingFront extends Module
 			}
 
 			$result = Db::getInstance()->getRow('
-			SELECT `id_referrer`
+			SELECT `id_referrer`, `passwd`
 			FROM `'._DB_PREFIX_.'referrer`
-			WHERE `id_referrer` = '.(int)Tools::getValue('id_referrer').' AND `passwd` = \''.pSQL(Tools::getValue('token')).'\'');
+			WHERE `id_referrer` = '.(int)Tools::getValue('id_referrer').'\'');
 
-			if (isset($result['id_referrer']) && (int)$result['id_referrer'] > 0)
+			if (isset($result['passwd']) && Tools::checkPassword(Tools::getValue('token'), $result['passwd']) && (int)$result['id_referrer'] > 0)
 				Referrer::getAjaxProduct((int)$result['id_referrer'], (int)Tools::getValue('id_product'), $fake_employee);
 		}
 		elseif (Tools::isSubmit('logout_tracking'))
@@ -90,17 +90,16 @@ class TrackingFront extends Module
 				$errors[] = $this->l('invalid password');
 			else
 			{
-				$passwd = Tools::encrypt($passwd);
 				$result = Db::getInstance()->getRow('
-				SELECT `id_referrer`
+				SELECT `id_referrer`, `passwd`
 				FROM `'._DB_PREFIX_.'referrer`
-				WHERE `name` = \''.pSQL($login).'\' AND `passwd` = \''.pSQL($passwd).'\'');
-				if (!isset($result['id_referrer']) || !($tracking_id = (int)$result['id_referrer']))
+				WHERE `name` = \''.pSQL($login).'\'');
+				if (!isset($result['passwd']) || !Tools::checkPassword($passwd, $result['passwd']) || !($tracking_id = (int)$result['id_referrer']))
 					$errors[] = $this->l('authentication failed');
 				else
 				{
 					$this->context->cookie->tracking_id = $tracking_id;
-					$this->context->cookie->tracking_passwd = $passwd;
+					$this->context->cookie->tracking_passwd = $result['passwd'];
 					Tools::redirect(Tools::getShopDomain(true, false).__PS_BASE_URI__.'modules/trackingfront/stats.php');
 				}
 			}
@@ -157,11 +156,12 @@ class TrackingFront extends Module
 		if (!$this->context->cookie->tracking_id || !$this->context->cookie->tracking_passwd)
 			return false;
 		$result = Db::getInstance()->getRow('
-		SELECT `id_referrer`
+		SELECT `id_referrer`, `passwd`
 		FROM `'._DB_PREFIX_.'referrer`
-		WHERE `id_referrer` = '.(int)$this->context->cookie->tracking_id.' AND `passwd` = \''.pSQL($this->context->cookie->tracking_passwd).'\'');
+		WHERE `id_referrer` = '.(int)$this->context->cookie->tracking_id.'\'');
+		//  AND `passwd` = \''.pSQL($this->context->cookie->tracking_passwd).'
 
-		return isset($result['id_referrer']) ? $result['id_referrer'] : false;
+		return (isset($result['passwd']) && Tools::checkPassword($this->context->cookie->tracking_passwd, $result['passwd'])) ? $result['id_referrer'] : false;
 	}
 
 	public function displayLogin()
