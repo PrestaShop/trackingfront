@@ -39,9 +39,9 @@ class TrackingFront extends Module
 
 		parent::__construct();
 
-		$this->displayName = $this->l('Tracking - Front office');
+		$this->displayName = $this->trans('Tracking - Front office', array(), 'Modules.Trackingfront.Admin');
 		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
-		$this->description = $this->l('Enables your affiliates to access their own statistics. See Stats/Referrers.');
+		$this->description = $this->trans('Enables your affiliates to access their own statistics. See Stats/Referrers.', array(), 'Modules.Trackingfront.Admin');
 	}
 
 	public function postProcess()
@@ -81,13 +81,13 @@ class TrackingFront extends Module
 			$login = trim(Tools::getValue('login'));
 			$passwd = trim(Tools::getValue('passwd'));
 			if (empty($login))
-				$errors[] = $this->l('login is required');
+				$errors[] = $this->trans('login is required', array(), 'Admin.Global');
 			elseif (!Validate::isGenericName($login))
-				$errors[] = $this->l('invalid login');
+				$errors[] = $this->trans('invalid login');
 			elseif (empty($passwd))
-				$errors[] = $this->l('password is required');
+				$errors[] = $this->trans('password is required', array(), 'Admin.Global');
 			elseif (!Validate::isPasswd($passwd, 1))
-				$errors[] = $this->l('invalid password');
+				$errors[] = $this->trans('invalid password', array(), 'Admin.Global');
 			else
 			{
 				$passwd = Tools::encrypt($passwd);
@@ -96,7 +96,7 @@ class TrackingFront extends Module
 				FROM `'._DB_PREFIX_.'referrer`
 				WHERE `name` = \''.pSQL($login).'\' AND `passwd` = \''.pSQL($passwd).'\'');
 				if (!isset($result['id_referrer']) || !($tracking_id = (int)$result['id_referrer']))
-					$errors[] = $this->l('authentication failed');
+					$errors[] = $this->trans('authentication failed', array(), 'Admin.Global');
 				else
 				{
 					$this->context->cookie->tracking_id = $tracking_id;
@@ -183,19 +183,19 @@ class TrackingFront extends Module
 		$this->smarty->assign('datepickerTo', $this->context->cookie->stats_date_to);
 
 		$display_tab = array(
-			'uniqs' => $this->l('Unique visitors'),
-			'visitors' => $this->l('Visitors'),
-			'visits' => $this->l('Visits'),
-			'pages' => $this->l('Pages viewed'),
-			'registrations' => $this->l('Registrations'),
-			'orders' => $this->l('Orders'),
-			'base_fee' => $this->l('Base fee'),
-			'percent_fee' => $this->l('Percent fee'),
-			'click_fee' => $this->l('Click fee'),
-			'sales' => $this->l('Sales'),
-			'cart' => $this->l('Average cart'),
-			'reg_rate' => $this->l('Registration rate'),
-			'order_rate' => $this->l('Order rate')
+			'uniqs' => $this->trans('Unique visitors', array(), 'Modules.Trackingfront.Admin'),
+			'visitors' => $this->trans('Visitors', array(), 'Modules.Trackingfront.Admin'),
+			'visits' => $this->trans('Visits', array(), 'Modules.Trackingfront.Admin'),
+			'pages' => $this->trans('Pages viewed', array(), 'Modules.Trackingfront.Admin'),
+			'registrations' => $this->trans('Registrations', array(), 'Modules.Trackingfront.Admin'),
+			'orders' => $this->trans('Orders', array(), 'Modules.Trackingfront.Admin'),
+			'base_fee' => $this->trans('Base fee', array(), 'Modules.Trackingfront.Admin'),
+			'percent_fee' => $this->trans('Percent fee', array(), 'Modules.Trackingfront.Admin'),
+			'click_fee' => $this->trans('Click fee', array(), 'Modules.Trackingfront.Admin'),
+			'sales' => $this->trans('Sales', array(), 'Modules.Trackingfront.Admin'),
+			'cart' => $this->trans('Average cart', array(), 'Modules.Trackingfront.Admin'),
+			'reg_rate' => $this->trans('Registration rate', array(), 'Modules.Trackingfront.Admin'),
+			'order_rate' => $this->trans('Order rate', array(), 'Modules.Trackingfront.Admin')
 		);
 		$this->smarty->assign('displayTab', $display_tab);
 
