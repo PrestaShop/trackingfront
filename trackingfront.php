@@ -183,19 +183,19 @@ class TrackingFront extends Module
 		$this->smarty->assign('datepickerTo', $this->context->cookie->stats_date_to);
 
 		$display_tab = array(
-			'uniqs' => $this->trans('Unique visitors', array(), 'Modules.Trackingfront.Admin'),
-			'visitors' => $this->trans('Visitors', array(), 'Modules.Trackingfront.Admin'),
-			'visits' => $this->trans('Visits', array(), 'Admin.'),
-			'pages' => $this->trans('Pages viewed', array(), 'Modules.Trackingfront.Admin'),
-			'registrations' => $this->trans('Registrations', array(), 'Modules.Trackingfront.Admin'),
-			'orders' => $this->trans('Orders', array(), 'Modules.Trackingfront.Admin'),
-			'base_fee' => $this->trans('Base fee', array(), 'Modules.Trackingfront.Admin'),
-			'percent_fee' => $this->trans('Percent fee', array(), 'Modules.Trackingfront.Admin'),
-			'click_fee' => $this->trans('Click fee', array(), 'Modules.Trackingfront.Admin'),
-			'sales' => $this->trans('Sales', array(), 'Modules.Trackingfront.Admin'),
-			'cart' => $this->trans('Average cart', array(), 'Modules.Trackingfront.Admin'),
-			'reg_rate' => $this->trans('Registration rate', array(), 'Modules.Trackingfront.Admin'),
-			'order_rate' => $this->trans('Order rate', array(), 'Modules.Trackingfront.Admin')
+			'uniqs' => $this->trans('Unique visitors', array(), 'Admin.Global'),
+			'visitors' => $this->trans('Visitors', array(), 'Admin.Global'),
+			'visits' => $this->trans('Visits', array(), 'Admin.Global'),
+			'pages' => $this->trans('Pages viewed', array(), 'Admin.Global'),
+			'registrations' => $this->trans('Registrations', array(), 'Admin.Global'),
+			'orders' => $this->trans('Orders', array(), 'Admin.Global'),
+			'base_fee' => $this->trans('Base fee', array(), 'Admin.Global'),
+			'percent_fee' => $this->trans('Percent fee', array(), 'Admin.Global'),
+			'click_fee' => $this->trans('Click fee', array(), 'Admin.Global'),
+			'sales' => $this->trans('Sales', array(), 'Admin.Global'),
+			'cart' => $this->trans('Average cart', array(), 'Admin.Global'),
+			'reg_rate' => $this->trans('Registration rate', array(), 'Admin.Global'),
+			'order_rate' => $this->trans('Order rate', array(), 'Admin.Global')
 		);
 		$this->smarty->assign('displayTab', $display_tab);
 
