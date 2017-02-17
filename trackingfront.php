@@ -81,13 +81,13 @@ class TrackingFront extends Module
 			$login = trim(Tools::getValue('login'));
 			$passwd = trim(Tools::getValue('passwd'));
 			if (empty($login))
-				$errors[] = $this->trans('login is required', array(), 'Admin.Global');
+				$errors[] = $this->trans('Login is required', array(), 'Shop.Theme.Error');
 			elseif (!Validate::isGenericName($login))
-				$errors[] = $this->trans('invalid login');
+				$errors[] = $this->trans('Invalid login', array(), 'Modules.Trackingfront.Shop');
 			elseif (empty($passwd))
-				$errors[] = $this->trans('password is required', array(), 'Admin.Global');
+				$errors[] = $this->trans('Password is required', array(), 'Shop.Theme.Error');
 			elseif (!Validate::isPasswd($passwd, 1))
-				$errors[] = $this->trans('invalid password', array(), 'Admin.Global');
+				$errors[] = $this->trans('Invalid password', array(), 'Modules.Trackingfront.Shop');
 			else
 			{
 				$passwd = Tools::encrypt($passwd);
@@ -96,7 +96,7 @@ class TrackingFront extends Module
 				FROM `'._DB_PREFIX_.'referrer`
 				WHERE `name` = \''.pSQL($login).'\' AND `passwd` = \''.pSQL($passwd).'\'');
 				if (!isset($result['id_referrer']) || !($tracking_id = (int)$result['id_referrer']))
-					$errors[] = $this->trans('authentication failed', array(), 'Admin.Global');
+					$errors[] = $this->trans('Authentication failed', array(), 'Shop.Notifications.Error');
 				else
 				{
 					$this->context->cookie->tracking_id = $tracking_id;
@@ -185,7 +185,7 @@ class TrackingFront extends Module
 		$display_tab = array(
 			'uniqs' => $this->trans('Unique visitors', array(), 'Modules.Trackingfront.Admin'),
 			'visitors' => $this->trans('Visitors', array(), 'Modules.Trackingfront.Admin'),
-			'visits' => $this->trans('Visits', array(), 'Modules.Trackingfront.Admin'),
+			'visits' => $this->trans('Visits', array(), 'Admin.'),
 			'pages' => $this->trans('Pages viewed', array(), 'Modules.Trackingfront.Admin'),
 			'registrations' => $this->trans('Registrations', array(), 'Modules.Trackingfront.Admin'),
 			'orders' => $this->trans('Orders', array(), 'Modules.Trackingfront.Admin'),
