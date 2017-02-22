@@ -27,7 +27,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>PrestaShop&trade; - {l s='Affiliation' mod='trackingfront'}</title>
+		<title>PrestaShop&trade; - {l s='Affiliation' d='Modules.Trackingfront.Shop'}</title>
         <script type="text/javascript">
             var product_ids = [{$js_tpl_var.product_ids}];
             var referrer_id = {$js_tpl_var.referrer_id};
