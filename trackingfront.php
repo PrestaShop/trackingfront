@@ -33,14 +33,14 @@ class TrackingFront extends Module
 	{
 		$this->name = 'trackingfront';
 		$this->tab = 'shipping_logistics';
-		$this->version = '1.8.4';
+		$this->version = '2.0.0';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 
 		parent::__construct();
 
 		$this->displayName = $this->trans('Tracking - Front office', array(), 'Modules.Trackingfront.Admin');
-		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
+		$this->ps_versions_compliancy = array('min' => '1.7.1.0', 'max' => _PS_VERSION_);
 		$this->description = $this->trans('Enables your affiliates to access their own statistics. See Stats/Referrers.', array(), 'Modules.Trackingfront.Admin');
 	}
 
@@ -81,13 +81,13 @@ class TrackingFront extends Module
 			$login = trim(Tools::getValue('login'));
 			$passwd = trim(Tools::getValue('passwd'));
 			if (empty($login))
-				$errors[] = $this->trans('Login is required', array(), 'Shop.Theme.Error');
+				$errors[] = $this->trans('Login is required', array(), 'Shop.Notifications.Error');
 			elseif (!Validate::isGenericName($login))
-				$errors[] = $this->trans('Invalid login', array(), 'Modules.Trackingfront.Shop');
+				$errors[] = $this->trans('Invalid login', array(), 'Shop.Notifications.Error');
 			elseif (empty($passwd))
 				$errors[] = $this->trans('Password is required', array(), 'Shop.Theme.Error');
 			elseif (!Validate::isPasswd($passwd, 1))
-				$errors[] = $this->trans('Invalid password', array(), 'Modules.Trackingfront.Shop');
+				$errors[] = $this->trans('Invalid password', array(), 'Shop.Notifications.Error');
 			else
 			{
 				$passwd = Tools::encrypt($passwd);
@@ -183,19 +183,19 @@ class TrackingFront extends Module
 		$this->smarty->assign('datepickerTo', $this->context->cookie->stats_date_to);
 
 		$display_tab = array(
-			'uniqs' => $this->trans('Unique visitors', array(), 'Admin.Global'),
-			'visitors' => $this->trans('Visitors', array(), 'Admin.Global'),
-			'visits' => $this->trans('Visits', array(), 'Admin.Global'),
-			'pages' => $this->trans('Pages viewed', array(), 'Admin.Global'),
-			'registrations' => $this->trans('Registrations', array(), 'Admin.Global'),
-			'orders' => $this->trans('Orders', array(), 'Admin.Global'),
-			'base_fee' => $this->trans('Base fee', array(), 'Admin.Global'),
-			'percent_fee' => $this->trans('Percent fee', array(), 'Admin.Global'),
-			'click_fee' => $this->trans('Click fee', array(), 'Admin.Global'),
-			'sales' => $this->trans('Sales', array(), 'Admin.Global'),
-			'cart' => $this->trans('Average cart', array(), 'Admin.Global'),
-			'reg_rate' => $this->trans('Registration rate', array(), 'Admin.Global'),
-			'order_rate' => $this->trans('Order rate', array(), 'Admin.Global')
+			'uniqs' => $this->trans('Unique visitors', array(), 'Modules.Trackingfront.Shop'),
+			'visitors' => $this->trans('Visitors', array(), 'Modules.Trackingfront.Shop'),
+			'visits' => $this->trans('Visits', array(), 'Modules.Trackingfront.Shop'),
+			'pages' => $this->trans('Pages viewed', array(), 'Modules.Trackingfront.Shop'),
+			'registrations' => $this->trans('Registrations', array(), 'Modules.Trackingfront.Shop'),
+			'orders' => $this->trans('Orders', array(), 'Modules.Trackingfront.Shop'),
+			'base_fee' => $this->trans('Base fee', array(), 'Modules.Trackingfront.Shop'),
+			'percent_fee' => $this->trans('Percent fee', array(), 'Modules.Trackingfront.Shop'),
+			'click_fee' => $this->trans('Click fee', array(), 'Modules.Trackingfront.Shop'),
+			'sales' => $this->trans('Sales', array(), 'Modules.Trackingfront.Shop'),
+			'cart' => $this->trans('Average cart', array(), 'Modules.Trackingfront.Shop'),
+			'reg_rate' => $this->trans('Registration rate', array(), 'Modules.Trackingfront.Shop'),
+			'order_rate' => $this->trans('Order rate', array(), 'Modules.Trackingfront.Shop')
 		);
 		$this->smarty->assign('displayTab', $display_tab);
 
