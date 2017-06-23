@@ -40,7 +40,7 @@ class TrackingFront extends Module
 		parent::__construct();
 
 		$this->displayName = $this->trans('Tracking - Front office', array(), 'Modules.Trackingfront.Admin');
-		$this->ps_versions_compliancy = array('min' => '1.7.1.0', 'max' => _PS_VERSION_);
+		$this->ps_versions_compliancy = array('min' => '1.7.2.0', 'max' => _PS_VERSION_);
 		$this->description = $this->trans('Enables your affiliates to access their own statistics. See Stats/Referrers.', array(), 'Modules.Trackingfront.Admin');
 	}
 
@@ -85,7 +85,7 @@ class TrackingFront extends Module
 			elseif (!Validate::isGenericName($login))
 				$errors[] = $this->trans('Invalid login', array(), 'Shop.Notifications.Error');
 			elseif (empty($passwd))
-				$errors[] = $this->trans('Password is required', array(), 'Shop.Theme.Error');
+				$errors[] = $this->trans('Password is required', array(), 'Shop.Notifications.Error');
 			elseif (!Validate::isPasswd($passwd, 1))
 				$errors[] = $this->trans('Invalid password', array(), 'Shop.Notifications.Error');
 			else
