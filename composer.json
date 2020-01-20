@@ -2,7 +2,7 @@
   "name": "prestashop/trackingfront",
   "description": "PrestaShop module trackingfront",
   "homepage": "https://github.com/PrestaShop/trackingfront",
-  "license": "AFL - Academic Free License (AFL 3.0)",
+  "license": "AFL-3.0",
   "authors": [
     {
       "name": "PrestaShop SA",
