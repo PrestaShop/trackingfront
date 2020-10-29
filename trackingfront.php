@@ -41,7 +41,7 @@ class TrackingFront extends Module
 
 		$this->displayName = $this->trans('Tracking - Front office', array(), 'Modules.Trackingfront.Admin');
 		$this->ps_versions_compliancy = array('min' => '1.7.2.0', 'max' => _PS_VERSION_);
-		$this->description = $this->trans('Enables your affiliates to access their own statistics. See Stats/Referrers.', array(), 'Modules.Trackingfront.Admin');
+		$this->description = $this->trans('Gather affiliates around, enable them to access statistics so that you can all grow faster.', array(), 'Modules.Trackingfront.Admin');
 	}
 
 	public function postProcess()
