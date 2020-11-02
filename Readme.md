@@ -2,7 +2,7 @@
 
 ## About
 
-Enables your affiliates to access their own statistics. See Stats/Referrers.
+Gather affiliates around, enable them to access statistics so that you can all grow faster. See Stats/Referrers.
 
 ## Multistore compatibility
 
