@@ -1,5 +1,7 @@
 # Tracking - Front office
 
+**This module has been archived, it’s no longer maintained but you still can fork it if you need it for your shop.**
+
 ## About
 
 Gather affiliates around, enable them to access statistics so that you can all grow faster. See Stats/Referrers.
